@@ -1,5 +1,7 @@
 # Laravel Test Task
 
+додай тут
+
 ```bash
 git clone https://github.com/Abrams25/nux-game.git
 cd nux-game
