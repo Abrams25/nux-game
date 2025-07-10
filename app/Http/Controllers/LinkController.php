@@ -52,7 +52,7 @@ class LinkController extends Controller
         $userLink = $request->get('userLink');
         $newLink = $this->userLinkService->regenerate($userLink);
         if ($newLink) {
-            return redirect("/link/{$newLink->uuid}")->with('status', "Link regenerated - " . $newLink);
+            return redirect("/link/{$newLink->uuid}")->with('status', 'Link regenerated');
         }
 
         return redirect("/link/{$newLink->uuid}")->withErrors('Error regenerating link');

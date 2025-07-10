@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 use App\Services\UserLink\UserLinkService;
 
@@ -22,17 +23,12 @@ class RegisterController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param RegisterRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $data = $request->validate([
-            'username' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-        ]);
-
-        $userLink = $this->userLinkService->create($data['username'], $data['phone']);
+        $userLink = $this->userLinkService->create($request->getUsername(), $request->getPhone());
 
         return redirect()->to("/link/{$userLink->uuid}");
     }

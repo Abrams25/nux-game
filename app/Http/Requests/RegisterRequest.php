@@ -11,7 +11,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,28 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'username' => 'required|string|max:255',
+            'phone' => [
+                'required',
+                'string',
+                'regex:/^\+?[0-9\s\-\(\)]{10,20}$/'
+            ],
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return $this->input('username');
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->input('phone');
     }
 }

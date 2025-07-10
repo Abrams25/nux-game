@@ -1,10 +1,11 @@
 # Laravel Test Task
 
 ```bash
-git clone git@github.com:ваш/проект.git
-cd проект
+git clone https://github.com/Abrams25/nux-game.git
+cd nux-game
 
 cp .env.example .env
+
 touch database/database.sqlite
 
 docker-compose up -d --build
